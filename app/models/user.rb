@@ -2,6 +2,10 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   has_many :friend_requests, foreign_key: "invitee_id"
+  has_many :requester_friendships, class_name: "Friendship", foreign_key: :requester_id
+  has_many :requester_friends, through: :requester_friendships, source: :requestee
+  has_many :requestee_friendships, class_name: "Friendship", foreign_key: :requestee_id
+  has_many :requestee_friends, through: :requestee_friendships, source: :requester
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
@@ -14,5 +18,9 @@ class User < ApplicationRecord
 
   def full_name
     self.first_name + " " + self.last_name
+  end
+
+  def friends
+    requester_friends + requestee_friends
   end
 end
