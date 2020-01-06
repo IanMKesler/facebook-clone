@@ -1,9 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  inviter: one
-  invitee: one
+  inviter: michael
+  invitee: sarah
 
-two:
-  inviter: two
-  invitee: two
