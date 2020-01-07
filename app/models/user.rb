@@ -7,6 +7,9 @@ class User < ApplicationRecord
   has_many :requestee_friendships, class_name: "Friendship", foreign_key: :requestee_id
   has_many :requestee_friends, through: :requestee_friendships, source: :requester
   has_many :posts
+  has_many :likes
+  has_many :liked_posts, through: :likes, source: :likeable, source_type: 'Post'
+  has_many :liked_comments, through: :likes, source: :likeable, source_type: 'Comment'
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 

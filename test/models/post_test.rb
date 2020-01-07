@@ -23,4 +23,9 @@ class PostTest < ActiveSupport::TestCase
     @post.content = "a"*1001
     assert_not @post.valid?
   end
+
+  test 'can be liked' do
+    like = posts(:one).likes.new(user_id: users(:michael).id)
+    assert like.valid?
+  end
 end
