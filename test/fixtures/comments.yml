@@ -2,8 +2,13 @@
 
 post_comment:
   author: michael
-  content: MyString
   commentable: test_post
   commentable_type: Post
   content: MyText
+
+comment_comment:
+  author: sarah
+  content: sometext
+  commentable: post_comment
+  commentable_type: Comment
 

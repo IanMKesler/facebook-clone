@@ -29,18 +29,35 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "email addresses should be unique" do
-    duplicate_user = @user.dup
-    duplicate_user.email = @user.email.upcase
-    @user.save
-    assert_not duplicate_user.valid?
+    @user.email = 'michael_bubli@gmail.com'
+    assert_not @user.valid?
   end
 
   test 'can like comments and posts' do
-    comment_like = users(:michael).likes.new(likeable_id: comments(:post_comment).id,
+    comment_like = users(:michael).likes.new(likeable_id: comments(:comment_comment).id,
                                               likeable_type: 'Comment')
     assert comment_like.valid?
-    post_like = users(:ashley).likes.new(likeable_id: posts(:test_post).id,
+    post_like = users(:ashley).likes.new(likeable_id: posts(:third_post).id,
                                           likeable_type: 'Post')
     assert post_like.valid?
+  end
+
+  test 'deleting a user deletes its posts,comments,friendships, friend requests and likes' do
+    things = {
+      posts: users(:michael).posts,
+      comments: users(:michael).comments,
+      requester_friendships: users(:michael).requester_friendships,
+      requestee_friendships: users(:michael).requestee_friendships,
+      recieved_requests: users(:michael).recieved_requests,
+      sent_requests: users(:michael).sent_requests,
+      likes: users(:michael).likes
+    }
+    things.each do |key, value|
+      assert_not value.empty?
+    end
+    users(:michael).destroy
+    things.each do |key, value|
+      assert value.empty?
+    end
   end
 end

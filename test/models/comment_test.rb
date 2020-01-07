@@ -24,4 +24,18 @@ class CommentTest < ActiveSupport::TestCase
     like = comments(:post_comment).likes.new(user_id: users(:sam).id)
     assert like.valid?
   end
+
+  test 'deletes likes and comments when deleted' do
+    things = {
+      likes: comments(:post_comment).likes,
+      comments: comments(:post_comment).comments
+    }
+    things.each do |key, value|
+      assert_not value.empty?
+    end
+    comments(:post_comment).destroy
+    things.each do |key, value|
+      assert value.empty?
+    end
+  end
 end

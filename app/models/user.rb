@@ -1,15 +1,18 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  has_many :friend_requests, foreign_key: "invitee_id"
-  has_many :requester_friendships, class_name: "Friendship", foreign_key: :requester_id
+  has_many :recieved_requests, class_name: "FriendRequest", foreign_key: "invitee_id", dependent: :destroy
+  has_many :sent_requests, class_name: "FriendRequest", foreign_key: "inviter_id", dependent: :destroy
+  has_many :requester_friendships, class_name: "Friendship", foreign_key: :requester_id, dependent: :destroy
   has_many :requester_friends, through: :requester_friendships, source: :requestee
-  has_many :requestee_friendships, class_name: "Friendship", foreign_key: :requestee_id
+  has_many :requestee_friendships, class_name: "Friendship", foreign_key: :requestee_id, dependent: :destroy
   has_many :requestee_friends, through: :requestee_friendships, source: :requester
-  has_many :posts
-  has_many :likes
+  has_many :posts, foreign_key: :author, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :likeable, source_type: 'Post'
+  has_many :comments, foreign_key: :author, dependent: :destroy
   has_many :liked_comments, through: :likes, source: :likeable, source_type: 'Comment'
+  
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
@@ -18,7 +21,8 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true, length: { maximum: 250 }
   validates :last_name, presence:true, length: { maximum: 250 }
-  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }
+  validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
+                    uniqueness: { case_sensitive: false }
 
   def full_name
     self.first_name + " " + self.last_name
@@ -26,5 +30,9 @@ class User < ApplicationRecord
 
   def friends
     requester_friends + requestee_friends
+  end
+
+  def requests
+    recieved_requests + sent_requests
   end
 end

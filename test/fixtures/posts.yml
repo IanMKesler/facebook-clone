@@ -3,3 +3,11 @@
 test_post:
   author: michael
   content: MyText
+
+second_post:
+  author: ashley
+  content: MyText
+
+third_post:
+  author: sam
+  content: MyText

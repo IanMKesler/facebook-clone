@@ -25,7 +25,21 @@ class PostTest < ActiveSupport::TestCase
   end
 
   test 'can be liked' do
-    like = posts(:test_post).likes.new(user_id: users(:michael).id)
+    like = posts(:test_post).likes.new(user_id: users(:sam).id)
     assert like.valid?
+  end
+
+  test 'deletes likes and comments when deleted' do
+    things = {
+      likes: posts(:test_post).likes,
+      comments: posts(:test_post).comments
+    }
+    things.each do |key, value|
+      assert_not value.empty?
+    end
+    posts(:test_post).destroy
+    things.each do |key, value|
+      assert value.empty?
+    end
   end
 end
