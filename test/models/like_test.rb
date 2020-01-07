@@ -3,7 +3,7 @@ require 'test_helper'
 class LikeTest < ActiveSupport::TestCase
   def setup 
     @like = Like.new(user_id: users(:michael).id,
-                      likeable_type: 'Post', likeable_id: posts(:one).id)
+                      likeable_type: 'Post', likeable_id: posts(:test_post).id)
   end
 
   test 'should be valid' do

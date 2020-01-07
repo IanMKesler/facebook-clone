@@ -34,4 +34,13 @@ class UserTest < ActiveSupport::TestCase
     @user.save
     assert_not duplicate_user.valid?
   end
+
+  test 'can like comments and posts' do
+    comment_like = users(:michael).likes.new(likeable_id: comments(:post_comment).id,
+                                              likeable_type: 'Comment')
+    assert comment_like.valid?
+    post_like = users(:ashley).likes.new(likeable_id: posts(:test_post).id,
+                                          likeable_type: 'Post')
+    assert post_like.valid?
+  end
 end
