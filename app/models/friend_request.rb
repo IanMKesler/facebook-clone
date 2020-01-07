@@ -5,8 +5,8 @@ class FriendRequest < ApplicationRecord
   
   validate :non_duplicate
   validate :not_friends
-  validates :inviter_id, presence: true
-  validates :invitee_id, presence: true
+  validates :inviter, presence: true
+  validates :invitee, presence: true
   
 
   def non_duplicate

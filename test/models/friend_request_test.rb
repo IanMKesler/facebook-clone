@@ -19,6 +19,15 @@ class FriendRequestTest < ActiveSupport::TestCase
     @request.invitee_id = users(:sam).id
   end
 
+  test 'should include a valid inviter and invitee' do
+    @request.inviter_id = 1
+    assert_not @request.valid?
+    @request.inviter_id = users(:michael).id
+    @request.invitee_id = 2
+    assert_not @request.valid?
+    @request.invitee_id = users(:sam).id
+  end
+
   test 'should not allow multiple requests' do
     @request.save
     assert_not @request.valid?

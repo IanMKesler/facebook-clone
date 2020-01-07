@@ -19,6 +19,15 @@ class FriendshipTest < ActiveSupport::TestCase
     @friendship.requestee_id = users(:sarah).id
   end
 
+  test 'should require a valid requester and requestee' do
+    @friendship.requester_id = 3
+    assert_not @friendship.valid?
+    @friendship.requester_id = users(:michael).id
+    @friendship.requestee_id = 4
+    assert_not @friendship.valid?
+    @friendship.requestee_id = users(:sarah).id
+  end
+
   test 'should not allow friendships without a request' do
     friendship = Friendship.new(requester_id: users(:michael).id,
                                 requestee_id: users(:sam).id)

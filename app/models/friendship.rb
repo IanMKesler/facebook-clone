@@ -4,8 +4,8 @@ class Friendship < ApplicationRecord
 
 
   validate :request
-  validates :requester_id, presence: true
-  validates :requestee_id, presence: true
+  validates :requester, presence: true
+  validates :requestee, presence: true
 
   def request
     begin
