@@ -9,7 +9,7 @@ class Friendship < ApplicationRecord
 
   def request
     begin
-      unless FriendRequest.where(inviter_id: requester_id, invitee_id: requestee_id).exists? || FriendRequest.where(inviter_id: requestee_id, invitee_id: requester_id).exists?
+      unless FriendRequest.where(inviter_id: requestee_id, invitee_id: requester_id).exists?
         errors.add(:requestee_id, 'No matching friend request')
       end
     rescue

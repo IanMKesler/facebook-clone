@@ -40,4 +40,10 @@ petrov:
   last_name: miller
   email: p.miller@gmail.com
   encrypted_password: <%= User.new.send(:password_digest, 'seriouslyverylastpassword') %>
+
+john:
+  first_name: john
+  last_name: amuglia
+  email: jman@gmail.com
+  encrypted_password: <%= User.new.send(:password_digest, 'nomorepromises') %>
   

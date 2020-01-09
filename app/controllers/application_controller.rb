@@ -8,4 +8,9 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource_or_scope)
     root_path
   end
+
+  def correct_user
+    @user = User.find(params[:user_id])
+    redirect_to(@user) unless current_user == @user
+  end
 end

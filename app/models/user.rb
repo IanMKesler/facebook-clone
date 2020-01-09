@@ -32,6 +32,10 @@ class User < ApplicationRecord
     requester_friends + requestee_friends
   end
 
+  def friendships
+    Friendship.where(requester_id: id).or(Friendship.where(requestee_id: id))
+  end
+
   def requests
     recieved_requests + sent_requests
   end

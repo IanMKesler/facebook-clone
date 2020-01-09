@@ -8,3 +8,7 @@ two:
   inviter: migel
   invitee: michael
 
+three:
+  inviter: michael
+  invitee: john
+

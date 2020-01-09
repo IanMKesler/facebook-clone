@@ -22,7 +22,7 @@ class FriendRequestsController < ApplicationController
             flash.now[:success] = "Request rescinded"
         rescue ActiveRecord::RecordNotFound
             flash.now[:danger] = "No request found"
-        end
+        end        
     end
 
 
@@ -30,10 +30,4 @@ class FriendRequestsController < ApplicationController
         def request_params
             params.require(:friend_request).permit(:invitee_id)
         end
-
-        def correct_user
-            @user = User.find(params[:user_id])
-            redirect_to(@user) unless current_user == @user
-        end
-    
 end

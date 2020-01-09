@@ -41,13 +41,14 @@ class FriendRequestsControllerTest < ActionDispatch::IntegrationTest
     request = @current_user.sent_requests.last
     delete user_friend_request_path(@current_user.id,request.id)
     assert_equal flash.now[:success], "Request rescinded"
-    assert_not_equal @current_user.sent_requests.last, request    
+    assert_raise ActiveRecord::RecordNotFound do
+      @current_user.sent_requests.find(request.id)
+    end  
   end
 
   test 'catches a bad destroy action' do
     request = @current_user.sent_requests.last
     delete user_friend_request_path(@current_user.id,1)
     assert_equal flash.now[:danger], "No request found"
-    assert_equal @current_user.sent_requests.last, request    
   end
 end
