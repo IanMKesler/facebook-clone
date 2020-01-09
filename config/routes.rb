@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :index] do
     resources :friend_requests, only: [:create, :index, :destroy]
     resources :friendships, only: [:create, :index, :destroy], path: :friends, as: :friends
+    resources :posts, only: [:create, :index, :destroy]
   end
 end

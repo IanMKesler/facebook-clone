@@ -3,7 +3,7 @@ require 'test_helper'
 class FriendshipTest < ActiveSupport::TestCase
   def setup
     @friendship = Friendship.new(requester_id: users(:michael).id,
-                                  requestee_id: users(:sarah).id)
+                                  requestee_id: users(:migel).id)
   end
 
   test 'should be valid' do

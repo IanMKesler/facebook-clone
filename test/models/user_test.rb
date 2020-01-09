@@ -60,4 +60,8 @@ class UserTest < ActiveSupport::TestCase
       assert value.empty?
     end
   end
+
+  test 'feed handles empty friend_ids array' do
+    users(:sam).feed
+  end
 end

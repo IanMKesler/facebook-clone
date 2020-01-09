@@ -29,7 +29,7 @@ class User < ApplicationRecord
   end
 
   def friends
-    requester_friends + requestee_friends
+    User.where(id: friend_ids)
   end
 
   def friendships
@@ -39,4 +39,15 @@ class User < ApplicationRecord
   def requests
     recieved_requests + sent_requests
   end
+
+  def feed
+    Post.where(author_id: id).or(Post.where(author_id: friend_ids)).order(:created_at)
+  end
+
+  private
+    def friend_ids
+      friendships.map do |f|
+        f.requester_id == self.id ? f.requestee_id : f.requester_id
+      end
+    end
 end
