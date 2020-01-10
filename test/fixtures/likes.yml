@@ -15,4 +15,9 @@ three:
   likeable: post_comment
   likeable_type: Comment
 
+four:
+  user: michael
+  likeable: four
+  likeable_type: Comment
+
 

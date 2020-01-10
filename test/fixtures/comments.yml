@@ -18,3 +18,9 @@ another_comment_comment:
   commentable: comment_comment
   commentable_type: Comment
 
+four:
+  author: migel
+  commentable: test_post
+  commentable_type: Post
+  content: randomnonsense
+
