@@ -12,3 +12,9 @@ comment_comment:
   commentable: post_comment
   commentable_type: Comment
 
+another_comment_comment:
+  author: michael
+  content: somemoretext
+  commentable: comment_comment
+  commentable_type: Comment
+
