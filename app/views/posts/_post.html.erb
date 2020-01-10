@@ -1,10 +1,17 @@
-<li>
-    <div class = "post-container">
-        <div class = 'post'>
-            <%= post.content %>
-        </div>
-        <div class = 'likes'>
-            <%= post.likes.count %>
-        </div>
+<div class = "post-container", id = <%= post.id.to_s %>>
+    <div class = 'author'>
+        <%= post.author.full_name %>
     </div>
-</li>
+    <div class = 'content'>
+        <%= post.content %>
+    </div>
+    <div class = 'likes'>
+        Likes: <%= post.likes.count %>
+    </div>
+    <% if post.author == current_user %>
+        <div class = 'delete-container'>
+            <%= render 'posts/delete_form', post: post %>
+        </div>
+    <% end %>
+</div>
+

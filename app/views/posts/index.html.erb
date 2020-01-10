@@ -1,8 +1,12 @@
 <h1><%= current_user.full_name %>'s Feed</h1>
-<div class = "feed-container">
-    <div class = "feed">
-        <ul>
-            <%= render @posts %>
-        </ul>
-    </div>
+<div class = 'post-form-container'>
+    <%= render 'posts/create_form' %>
 </div>
+
+<% if !@posts.empty? %>
+    <div class = "feed-container">
+        <%= render 'feed' %>
+    </div>
+<% else %>
+    <h2>Nothing in your timeline. Try adding some friends and posting some content.</h2>
+<% end %>

@@ -1,3 +1,13 @@
 <h1><%= @user.first_name + " " + @user.last_name %></h1>
 <h3><%= @user.email %></h3>
 <%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+
+<% if !@posts.empty? %>
+    <div class = 'posts-container'>
+        <div class = 'posts'>
+            <%= render @posts %>
+        </div>
+    </div>
+<% else %>
+    <h2>No posts yet. Why not create one?</h2>
+<% end %>

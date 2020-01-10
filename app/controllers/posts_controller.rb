@@ -13,6 +13,9 @@ class PostsController < ApplicationController
         else
             flash.now[:danger] = "Post cannot be created"
         end
+        respond_to do |format|
+            format.js
+        end
     end
 
     def destroy
@@ -22,6 +25,9 @@ class PostsController < ApplicationController
             flash.now[:success] = "Post deleted"
         rescue ActiveRecord::RecordNotFound
             flash.now[:danger] = "No post found"
+        end
+        respond_to do |format|
+            format.js
         end
     end
 

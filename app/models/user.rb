@@ -41,7 +41,7 @@ class User < ApplicationRecord
   end
 
   def feed
-    Post.where(author_id: id).or(Post.where(author_id: friend_ids)).order(:created_at)
+    Post.where(author_id: id).or(Post.where(author_id: friend_ids)).order(created_at: :desc)
   end
 
   private

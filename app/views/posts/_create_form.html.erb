@@ -1,0 +1,6 @@
+<div class = 'create-form' >
+    <%= form_with url: user_posts_path(@user.id), scope: :post  do |f| %>
+        <%= f.text_area :content %>
+        <%= f.submit "Post" %>
+    <% end %>
+</div>
