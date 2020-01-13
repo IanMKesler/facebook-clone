@@ -1,0 +1,14 @@
+<div class = 'comment'>
+    <div class = 'author'>
+        <%= comment.author.full_name %>
+    </div>
+    <div class = 'content'>
+        <%= comment.content %>
+    </div>
+    <%= render 'likes/likes', likeable: comment %>
+    <%= render 'comments/create_form', commentable: comment%>
+    <div class = 'comment-container', id = <%= comment.id.to_s %>>
+    
+    </div>
+    <%= render comment.comments %>
+</div>  

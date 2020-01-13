@@ -5,13 +5,15 @@
     <div class = 'content'>
         <%= post.content %>
     </div>
-    <div class = 'likes'>
-        Likes: <%= post.likes.count %>
-    </div>
+    <%= render 'likes/likes', likeable: post %>
     <% if post.author == current_user %>
         <div class = 'delete-container'>
             <%= render 'posts/delete_form', post: post %>
         </div>
     <% end %>
+    <%= render 'comments/create_form', commentable: post %>
+    <div class = 'comment-container', id = <%= post.id.to_s %>>
+        <%= render post.comments %>
+    </div>
 </div>
 

@@ -14,6 +14,9 @@ class CommentsController < ApplicationController
         rescue ActiveRecord::RecordNotFound
             flash.now[:danger] = "Commentable not found"
         end
+        respond_to do |format|
+            format.js
+        end
     end
 
     def destroy

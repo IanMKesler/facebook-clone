@@ -1,3 +1,8 @@
 <div class = "feed">
+        <% if @posts.empty? %>
+                <div class = 'no-content'>
+                        <h2>Nothing in your timeline. Try adding some friends and posting some content.</h2>
+                </div>
+        <% end %>
         <%= render @posts %>
 </div>

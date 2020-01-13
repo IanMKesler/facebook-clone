@@ -1,0 +1,6 @@
+<div class = 'comment-create-form' >
+    <%= form_with url: polymorphic_path([current_user, commentable, Comment.new]), scope: :comment  do |f| %>
+        <%= f.text_area :content %>
+        <%= f.submit "Comment" %>
+    <% end %>
+</div>
