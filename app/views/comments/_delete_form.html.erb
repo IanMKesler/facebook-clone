@@ -1,0 +1,5 @@
+<div class = 'comment-delete-form'>
+    <%= form_with url: user_comment_path(current_user.id, comment.id), method: :delete do |f| %>
+        <%= f.submit "Delete comment"%>
+    <% end %>
+</div>

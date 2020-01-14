@@ -1,14 +1,20 @@
-<div class = 'comment'>
-    <div class = 'author'>
-        <%= comment.author.full_name %>
+<div class = 'comment-container', id = <%= comment.id.to_s %>>
+    <div class = 'comment'>
+        <div class = 'author'>
+            <%= comment.author.full_name %>
+        </div>
+        <div class = 'content'>
+            <%= comment.content %>
+        </div>
+        <%= render 'likes/likes', likeable: comment %>
+        <%= render 'comments/create_form', commentable: comment%>
+        
+        <% if comment.author == current_user %>
+            <%= render 'comments/delete_form', comment: comment %>
+        <% end %>
+        <div class = '<%= comment.id.to_s %>-comments'>
+        
+        </div>
+        <%= render comment.comments, commentable: comment %>
     </div>
-    <div class = 'content'>
-        <%= comment.content %>
-    </div>
-    <%= render 'likes/likes', likeable: comment %>
-    <%= render 'comments/create_form', commentable: comment%>
-    <div class = 'comment-container', id = <%= comment.id.to_s %>>
-    
-    </div>
-    <%= render comment.comments %>
 </div>  

@@ -27,6 +27,9 @@ class CommentsController < ApplicationController
         rescue ActiveRecord::RecordNotFound
             flash.now[:danger] = "Comment could not be found"
         end
+        respond_to do |format|
+            format.js
+        end
     end
 
 
