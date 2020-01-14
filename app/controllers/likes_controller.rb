@@ -14,15 +14,22 @@ class LikesController < ApplicationController
         rescue ActiveRecord::RecordNotFound
             flash.now[:danger] = "Likeble not found"
         end
+        respond_to do |format|
+            format.js{ render action: 'update.js.erb' }
+        end
     end
 
     def destroy
         begin
             @like = current_user.likes.find(params[:id])
+            @likeable = @like.likeable
             @like.destroy
             flash.now[:success] = "Unliked"
         rescue ActiveRecord::RecordNotFound
             flash.now[:danger] = "Like not found"
+        end
+        respond_to do |format|
+            format.js{ render action: 'update.js.erb' }
         end
     end
 

@@ -6,7 +6,9 @@
         <div class = 'content'>
             <%= comment.content %>
         </div>
-        <%= render 'likes/likes', likeable: comment %>
+        <div class = '<%= comment.id.to_s %>-likes'>
+            <%= render 'likes/likes', likeable: comment %>
+        </div>
         <%= render 'comments/create_form', commentable: comment%>
         
         <% if comment.author == current_user %>

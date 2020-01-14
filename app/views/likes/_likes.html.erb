@@ -1,3 +1,9 @@
-<div class = 'likes'>
-        Likes: <%= likeable.likes.count %>
-</div>
+<% like = current_user.likes.where(likeable_type: likeable.class.to_s, likeable_id: likeable.id).first %>
+<% unless likeable.author_id == current_user.id %>
+        <% if like %> 
+                <%= render 'likes/delete_form', likeable: likeable, like: like %>
+        <% else %>
+                <%= render 'likes/create_form', likeable: likeable %>
+        <% end %>
+<% end %> 
+<%= likeable.likes.count %>

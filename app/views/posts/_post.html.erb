@@ -5,7 +5,9 @@
     <div class = 'content'>
         <%= post.content %>
     </div>
-    <%= render 'likes/likes', likeable: post %>
+    <div class = '<%= post.id.to_s %>-likes'>
+        <%= render 'likes/likes', likeable: post %>
+    </div>
     <% if post.author == current_user %>
         <div class = 'delete-container'>
             <%= render 'posts/delete_form', post: post %>

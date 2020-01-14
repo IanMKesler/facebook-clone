@@ -13,11 +13,12 @@ Rails.application.routes.draw do
     resources :friendships, only: [:create, :index, :destroy], path: :friends, as: :friends
     resources :posts, only: [:create, :index, :destroy] do
       resources :comments, only: [:create, :destroy]
-      resources :likes, only: [:create, :destroy]
+      resources :likes, only: [:create]
     end
     resources :comments, only: [:create, :destroy, :index] do
       resources :comments, only: [:create, :destroy]
-      resources :likes, only: [:create, :destroy]
+      resources :likes, only: [:create]
     end
+    resources :likes, only: [:index, :destroy]
   end
 end

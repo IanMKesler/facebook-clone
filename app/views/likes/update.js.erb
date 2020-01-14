@@ -1,0 +1,2 @@
+$('.<%= @likeable.id %>-likes').empty();
+$('.<%= @likeable.id %>-likes').append("<%= j render 'likes/likes', likeable: @likeable %>");

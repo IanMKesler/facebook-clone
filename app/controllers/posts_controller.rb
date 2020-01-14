@@ -35,4 +35,8 @@ class PostsController < ApplicationController
         def post_params
             params.require(:post).permit(:content)
         end
+
+        def belongs_to_user(object)
+            object.author_id == current_user.id
+        end
 end

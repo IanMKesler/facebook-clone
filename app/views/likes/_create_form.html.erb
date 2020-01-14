@@ -1,0 +1,6 @@
+<div class = 'like-create-form'>
+    <%= form_with url: polymorphic_path([current_user, likeable, Like.new]) do |f| %>
+        <%= f.submit "Like"%>
+    <% end %>
+</div>
+
