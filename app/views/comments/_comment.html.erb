@@ -13,7 +13,7 @@
             <%= render 'comments/create_link', commentable: comment %>
         </div>
         <% if comment.author == current_user %>
-            <%= render 'comments/delete_form', comment: comment %>
+            <%= button_to "Delete Comment", user_comment_path(current_user, comment), method: :delete, remote: true %>
         <% end %>
         <div class = '<%= comment.id.to_s %>-comments'>
         
