@@ -1,6 +1,9 @@
-<div class = 'comment-create-form' >
-    <%= form_with url: polymorphic_path([current_user, commentable, Comment.new]), scope: :comment  do |f| %>
+<div id = '<%= @commentable.class.to_s %>-<%= @commentable.id.to_s %>-comment-create-form' >
+    <%= form_with url: polymorphic_path([current_user, @commentable, Comment.new]), scope: :comment  do |f| %>
         <%= f.text_area :content %>
         <%= f.submit "Comment" %>
     <% end %>
+    <%= button_tag "hide", type: 'button', onclick: "$('##{@commentable.class}-#{@commentable.id}-comment-create-form').hide();
+                                                        $('##{@commentable.id}-new-comment-link').show();" %>
+    <%#= button_to_function "hide", "$('##{@commentable.class}-#{@commentable.id}-comment-create-form').hide();" %>
 </div>

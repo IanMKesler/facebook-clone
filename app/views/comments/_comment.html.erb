@@ -9,14 +9,17 @@
         <div class = '<%= comment.id.to_s %>-likes'>
             <%= render 'likes/likes', likeable: comment %>
         </div>
-        <%= render 'comments/create_form', commentable: comment%>
-        
+        <div class = 'new-comment-comment-container'>
+            <%= render 'comments/create_link', commentable: comment %>
+        </div>
         <% if comment.author == current_user %>
             <%= render 'comments/delete_form', comment: comment %>
         <% end %>
         <div class = '<%= comment.id.to_s %>-comments'>
         
         </div>
-        <%= render comment.comments, commentable: comment %>
+        <div id = '<%= comment.class.to_s %>-<%= comment.id %>-comments' >
+            <%= render comment.comments, commentable: comment %>
+        </div>
     </div>
 </div>  

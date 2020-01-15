@@ -13,9 +13,10 @@
             <%= render 'posts/delete_form', post: post %>
         </div>
     <% end %>
-    <%#= link_to "Create Comment", %>
-    <%= render 'comments/create_form', commentable: post %>
-    <div class = '<%= post.id.to_s %>-comments'>
+    <div class = 'new-post-comment-container'>
+        <%= render 'comments/create_link', commentable: post%>
+    </div>
+    <div id = '<%= post.class.to_s %>-<%= post.id.to_s %>-comments'>
         <%= render post.comments %>
     </div>
 </div>

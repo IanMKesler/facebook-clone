@@ -1,0 +1,1 @@
+<%= link_to "Create Comment", polymorphic_path([current_user, commentable, Comment], action: 'new'), {id: "#{commentable.id}-new-comment-link" , remote: true} %>

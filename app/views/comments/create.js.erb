@@ -1,1 +1,4 @@
-$('.<%= @commentable.id %>-comments').prepend('<%= j render(@comment) %>');
+$('#<%= @commentable.class.to_s %>-<%= @commentable.id %>-comments').prepend('<%= j render(@comment) %>');
+$('#<%= @commentable.class.to_s %>-<%= @commentable.id.to_s %>-comment-create-form').hide();
+$("#<%= @commentable.id %>-new-comment-link").show();
+

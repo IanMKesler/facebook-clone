@@ -1,9 +1,11 @@
 class CommentsController < ApplicationController
     before_action :authenticate_user!
-    before_action :find_commentable, only: [:create]
+    before_action :find_commentable, only: [:new, :create]
 
     def new
-        @comment = Comment.new
+        respond_to do |format|
+            format.js
+        end
     end
 
     def create
