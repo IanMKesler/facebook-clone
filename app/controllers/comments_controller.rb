@@ -2,6 +2,10 @@ class CommentsController < ApplicationController
     before_action :authenticate_user!
     before_action :find_commentable, only: [:create]
 
+    def new
+        @comment = Comment.new
+    end
+
     def create
         begin
             raise ActiveRecord::RecordNotFound unless @commentable
