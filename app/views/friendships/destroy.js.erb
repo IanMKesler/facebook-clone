@@ -1,2 +1,2 @@
-$('#unfriend-button').empty().prepend("<p>Unfriended</p>").delay('slow').remove();
-$('#request-button-container').prepend(" j <%= render 'friend_requests/friend_request_button', user_id: @user_id %>");
+$('#unfriend-button').empty().prepend("<p>Unfriended</p>").delay(1000).fadeOut(400);
+$('#request-button-container').append(" <%= j render('friend_requests/friend_request_button', user_id: @user.id) %>");

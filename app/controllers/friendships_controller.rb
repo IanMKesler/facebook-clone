@@ -21,9 +21,8 @@ class FriendshipsController < ApplicationController
 
   def destroy
     begin
-      friendship = current_user.friendships.find(destroy_params)
+      friendship = current_user.friendships.find(params[:id])
       @user = friendship.requester == current_user ? friendship.requestee : friendship.requester #try passing as param????
-      byebug
       friendship.destroy
       flash.now[:success] = "No longer friends"
     rescue ActiveRecord::RecordNotFound
@@ -35,11 +34,6 @@ class FriendshipsController < ApplicationController
   end
 
   private
-
-    def destroy_params
-      params.permit(:id)
-    end
-
     def friendship_params
       params.require(:friendship).permit(:requestee_id)
     end

@@ -3,7 +3,7 @@
 <div id = 'request-button-container'>
     <% case @button %>
     <% when 'friend_request' %>
-    <%= render 'friend_requests/friend_request_button', user_id: @user.id%>   
+        <%= render 'friend_requests/friend_request_button', user_id: @user.id %>   
     <% when 'sent_request' , "recieved_request" %>
         <div id= pending-request-message>
             <p>Pending request</p>
