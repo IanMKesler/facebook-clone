@@ -32,12 +32,16 @@ class User < ApplicationRecord
     User.where(id: friend_ids)
   end
 
+  def friendship(user)
+    Friendship.where(requester_id: id, requestee_id: user.id).or(Friendship.where(requester_id: user.id, requestee_id: id)).first
+  end
+
   def friendships
     Friendship.where(requester_id: id).or(Friendship.where(requestee_id: id))
   end
 
   def requests
-    recieved_requests + sent_requests
+    FriendRequest.where(inviter_id: id).or(FriendRequest.where(invitee_id: id))
   end
 
   def feed

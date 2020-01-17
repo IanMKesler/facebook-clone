@@ -13,12 +13,12 @@ class CommentsController < ApplicationController
             raise ActiveRecord::RecordNotFound unless @commentable
             @comment = @commentable.comments.new(comment_params)
             if @comment.save
-                flash.now[:success] = "Comment posted"
+                flash[:success] = "Comment posted"
             else
-                flash.now[:danger] = "Comment could not be posted"
+                flash[:danger] = "Comment could not be posted"
             end
         rescue ActiveRecord::RecordNotFound
-            flash.now[:danger] = "Commentable not found"
+            flash[:danger] = "Commentable not found"
         end
         respond_to do |format|
             format.js

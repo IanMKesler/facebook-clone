@@ -7,6 +7,8 @@ class Friendship < ApplicationRecord
   validates :requester, presence: true
   validates :requestee, presence: true
 
+  after_create :destroy_request
+
   def request
     begin
       unless FriendRequest.where(inviter_id: requestee_id, invitee_id: requester_id).exists?
@@ -14,5 +16,9 @@ class Friendship < ApplicationRecord
       end
     rescue
     end
+  end
+
+  def destroy_request
+    FriendRequest.where(inviter_id: requestee_id, invitee_id: requester_id).first.destroy
   end
 end

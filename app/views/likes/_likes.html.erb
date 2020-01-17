@@ -2,7 +2,7 @@
 <% unless likeable.author_id == current_user.id %>
         <% if like %> 
                 <%#= render 'likes/delete_form', likeable: likeable, like: like %>
-                <%= button_to "Unlike", user_like_path(current_user,like), method: :delete, remote: true %>
+                <%= button_to "Unlike", user_like_path(current_user.id,like.id), method: :delete, remote: true %>
         <% else %>
                 <%#= render 'likes/create_form', likeable: likeable %>
                 <%= button_to "Like", polymorphic_path([current_user, likeable, Like.new]), remote: true %>

@@ -7,12 +7,12 @@ class LikesController < ApplicationController
             raise ActiveRecord::RecordNotFound unless @likeable
             @like = @likeable.likes.new(user_id: current_user.id)
             if @like.save
-                flash.now[:success] = "Liked"
+                flash[:success] = "Liked"
             else
-                flash.now[:danger] = "Something went wrong"
+                flash[:danger] = "Something went wrong"
             end
         rescue ActiveRecord::RecordNotFound
-            flash.now[:danger] = "Likeble not found"
+            flash[:danger] = "Likeble not found"
         end
         respond_to do |format|
             format.js{ render action: 'update.js.erb' }
@@ -24,9 +24,9 @@ class LikesController < ApplicationController
             @like = current_user.likes.find(params[:id])
             @likeable = @like.likeable
             @like.destroy
-            flash.now[:success] = "Unliked"
+            flash[:success] = "Unliked"
         rescue ActiveRecord::RecordNotFound
-            flash.now[:danger] = "Like not found"
+            flash[:danger] = "Like not found"
         end
         respond_to do |format|
             format.js{ render action: 'update.js.erb' }

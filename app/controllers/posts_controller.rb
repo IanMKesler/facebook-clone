@@ -9,9 +9,9 @@ class PostsController < ApplicationController
     def create
         @post = current_user.posts.new(post_params)
         if @post.save
-            flash.now[:success] = "Posted"
+            flash[:success] = "Posted"
         else
-            flash.now[:danger] = "Post cannot be created"
+            flash[:danger] = "Post cannot be created"
         end
         respond_to do |format|
             format.js
@@ -22,9 +22,9 @@ class PostsController < ApplicationController
         begin
             @post = current_user.posts.find(params[:id])
             @post.destroy
-            flash.now[:success] = "Post deleted"
+            flash[:success] = "Post deleted"
         rescue ActiveRecord::RecordNotFound
-            flash.now[:danger] = "No post found"
+            flash[:danger] = "No post found"
         end
         respond_to do |format|
             format.js

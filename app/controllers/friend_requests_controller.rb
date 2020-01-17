@@ -13,6 +13,9 @@ class FriendRequestsController < ApplicationController
         else
             flash.now[:danger] = "Request unable to be sent"
         end
+        respond_to do |format|
+            format.js
+        end
     end
 
     def destroy
