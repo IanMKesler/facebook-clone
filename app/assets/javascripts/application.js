@@ -18,3 +18,17 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
+
+// $(function() {
+//     $('#hide-comments').click(function() {
+        
+//         $(this).hide();
+//     })
+// })
+
+function hide_comments (id) {
+    let tag = '#Post-' + id;
+    $(tag + '-hide-comments').hide();
+    $(tag + '-show-comments').show();
+    $(tag + '-comments').empty();
+}

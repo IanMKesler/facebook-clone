@@ -1,6 +1,14 @@
 class CommentsController < ApplicationController
     before_action :authenticate_user!
-    before_action :find_commentable, only: [:new, :create]
+    before_action :find_commentable, only: [:new, :create, :index]
+
+
+    def index
+        @comments = @commentable.comments
+        respond_to do |format|
+            format.js
+        end
+    end
 
     def new
         respond_to do |format|

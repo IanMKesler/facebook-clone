@@ -1,0 +1,3 @@
+$('#<%= @commentable.class.to_s %>-<%= @commentable.id %>-show-comments').hide();
+$('#<%= @commentable.class.to_s %>-<%= @commentable.id %>-hide-comments').show();
+$('#<%= @commentable.class.to_s %>-<%= @commentable.id %>-comments').append('<%= j render(@comments) %>');

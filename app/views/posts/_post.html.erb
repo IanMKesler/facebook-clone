@@ -16,8 +16,13 @@
     <div class = 'new-post-comment-container'>
         <%= render 'comments/create_link', commentable: post%>
     </div>
-    <div id = '<%= post.class.to_s %>-<%= post.id.to_s %>-comments'>
-        <%= render post.comments %>
-    </div>
+    <%= content_tag "div", id: "#{post.class}-#{post.id}-comments-links" do %>
+        <% if post.comments.count > 0 %>
+            <%= link_to "Show #{pluralize(post.comments.count, 'comment')}", user_post_comments_path(post.author, post.id), id: "#{post.class}-#{post.id}-show-comments", remote: true %>
+            <%= link_to "Hide Comments", '#', onclick: "hide_comments(#{post.id});", id: "#{post.class}-#{post.id}-hide-comments", style: "display: none;", remote: true %>
+        <% end %>
+    <% end %>
+    <%= content_tag "div", id: "#{post.class}-#{post.id}-comments" do %>
+    <% end %>
 </div>
 
