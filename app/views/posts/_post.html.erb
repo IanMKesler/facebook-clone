@@ -1,28 +1,50 @@
-<div class = "post-container", id = <%= post.id.to_s %>>
-    <div class = 'author'>
-        <%= post.author.full_name %>
+<div class="social-feed-separated", id=<%= post.id.to_s %>>
+    <div class="social-avatar">
     </div>
-    <div class = 'content'>
-        <%= post.content %>
-    </div>
-    <div class = '<%= post.id.to_s %>-likes'>
-        <%= render 'likes/likes', likeable: post %>
-    </div>
-    <% if post.author == current_user %>
-        <div class = 'delete-container'>
-            <%= button_to "Delete Post", user_post_path(current_user, post), method: :delete, remote: true %>
-        </div>
-    <% end %>
-    <div class = 'new-post-comment-container'>
-        <%= render 'comments/create_link', commentable: post%>
-    </div>
-    <%= content_tag "div", id: "#{post.class}-#{post.id}-comments-links" do %>
-        <% if post.comments.count > 0 %>
-            <%= link_to "Show #{pluralize(post.comments.count, 'comment')}", user_post_comments_path(post.author, post.id), id: "#{post.class}-#{post.id}-show-comments", remote: true %>
-            <%= link_to "Hide Comments", '#', onclick: "hide_comments(#{post.id});", id: "#{post.class}-#{post.id}-hide-comments", style: "display: none;", remote: true %>
+
+    <div class="social-feed-box">
+        <% if current_user == post.author %>
+            <div class="pull-right social-action dropdown">
+                <button data-toggle="dropdown" class="dropdown-toggle btn-white">
+                    <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu m-t-xs">
+                    <li> <%= render 'posts/delete_button', post: post %>
+                </ul>
+            </div>
         <% end %>
-    <% end %>
-    <%= content_tag "div", id: "#{post.class}-#{post.id}-comments" do %>
-    <% end %>
+        <div class="social-avatar">
+            <%= link_to post.author.full_name, post.author %>
+            <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+        </div>
+        <div class="social-body">
+            <p>
+                <%= post.content %>
+            </p>
+            <div class="btn-group">
+                <%# <button class="btn btn-white btn-xs"><i class="fa fa-thumbs-up"></i> Like this!</button> %>
+                <div class = '<%= post.id.to_s %>-likes'>
+                    <%= render 'likes/likes', likeable: post %>
+                </div>
+                <div class = 'new-post-comment-container'>
+                    <%= render 'comments/create_link', commentable: post%>
+                </div>
+                <%# <button class="btn btn-white btn-xs"><i class="fa fa-comments"></i> Comment</button> %>
+                <%# <button class="btn btn-white btn-xs"><i class="fa fa-share"></i> Share</button> %>
+            </div>
+            <%= content_tag "div", id: "#{post.class}-#{post.id}-new-comment-container" do %>
+            <% end %>
+        </div>
+        <div class="social-footer">
+            <%= content_tag "div", id: "#{post.class}-#{post.id}-comments-links" do %>
+                <% if post.comments.count > 0 %>
+                    <%= link_to "Show #{pluralize(post.comments.count, 'comment')}", user_post_comments_path(post.author, post.id), id: "#{post.class}-#{post.id}-show-comments", remote: true %>
+                    <%= link_to "Hide Comments", '#', onclick: "hide_comments(#{post.id});", id: "#{post.class}-#{post.id}-hide-comments", style: "display: none;", remote: true %>
+                <% end %>
+            <% end %>
+            <%= content_tag "div", id: "#{post.class}-#{post.id}-comments" do %>
+            <% end %>
+        </div>
+    </div>
 </div>
 

@@ -1,3 +1,15 @@
+<div class="social-comment", id = <%= comment.id.to_s %>>
+    <a href="" class="pull-left">
+    </a>
+    <div class="media-body">
+        <%= link_to comment.author.full_name, comment.author %>
+        <%= comment.content %>
+        <br>
+        <a href="#" class="small"><i class="fa fa-thumbs-up"></i> 26 Like this!</a> -
+        <small class="text-muted">12.06.2014</small>
+    </div>
+</div>
+
 <div class = 'comment-container', id = <%= comment.id.to_s %>>
     <div class = 'comment'>
         <div class = 'author'>

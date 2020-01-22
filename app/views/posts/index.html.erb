@@ -1,9 +1,9 @@
-<h1><%= current_user.full_name %>'s Feed</h1>
-<div class = 'post-form-container'>
-    <%= render 'posts/create_form' %>
-</div>
-
-
-<div class = "feed-container">
-    <%= render 'feed' %>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="new-post-form">
+        <%= render 'posts/create_form' %>
+    </div>
+    <div class="col-md-7", id='feed'>
+        <%= render @posts %>
+    </div>
 </div>

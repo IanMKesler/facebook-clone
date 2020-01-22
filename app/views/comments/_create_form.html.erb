@@ -3,7 +3,5 @@
         <%= f.text_area :content %>
         <%= f.submit "Comment" %>
     <% end %>
-    <%= button_tag "hide", type: 'button', onclick: "$('##{@commentable.class}-#{@commentable.id}-comment-create-form').hide();
-                                                        $('##{@commentable.id}-new-comment-link').show();" %>
-    <%#= button_to_function "hide", "$('##{@commentable.class}-#{@commentable.id}-comment-create-form').hide();" %>
+    <%= button_tag "hide", type: 'button', onclick: "$('##{@commentable.class}-#{@commentable.id}-new-comment-container').empty();"%>
 </div>
