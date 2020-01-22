@@ -1,6 +1,6 @@
 <div class = 'post-create-form' >
     <%= form_with url: polymorphic_path([current_user, Post.new]), scope: :post  do |f| %>
         <%= f.text_area :content %>
-        <%= f.submit "Post" %>
+        <%= f.submit "Post", class: "btn btn-primary" %>
     <% end %>
 </div>

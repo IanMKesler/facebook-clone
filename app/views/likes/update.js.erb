@@ -1,2 +1,2 @@
-$('.<%= @likeable.id %>-likes').empty();
-$('.<%= @likeable.id %>-likes').append("<%= j render 'likes/likes', likeable: @likeable %>");
+$('#<%= @likeable.class.to_s %>-<%= @likeable.id.to_s %>-likes').empty();
+$('#<%= @likeable.class.to_s %>-<%= @likeable.id.to_s %>-likes').append("<%= j render 'likes/likes_button', likeable: @likeable %>");

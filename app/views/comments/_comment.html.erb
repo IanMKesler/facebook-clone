@@ -5,7 +5,10 @@
         <%= link_to comment.author.full_name, comment.author %>
         <%= comment.content %>
         <br>
-        <a href="#" class="small"><i class="fa fa-thumbs-up"></i> 26 Like this!</a> -
+        <div id = '<%= comment.class.to_s %>-<%= comment.id.to_s %>-likes'>
+            <%= render 'likes/likes_button', likeable: comment %>
+        </div>
+        <%# <a href="#" class="small"><i class="fa fa-thumbs-up"></i> 26 Like this!</a> - %>
         <small class="text-muted">12.06.2014</small>
     </div>
 </div>
@@ -19,7 +22,7 @@
             <%= comment.content %>
         </div>
         <div class = '<%= comment.id.to_s %>-likes'>
-            <%= render 'likes/likes', likeable: comment %>
+            <%= render 'likes/likes_button', likeable: comment %>
         </div>
         <div class = 'new-comment-comment-container'>
             <%= render 'comments/create_link', commentable: comment %>

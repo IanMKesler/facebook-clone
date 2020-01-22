@@ -1,7 +1,9 @@
 <div id = '<%= @commentable.class.to_s %>-<%= @commentable.id.to_s %>-comment-create-form' >
     <%= form_with url: polymorphic_path([current_user, @commentable, Comment.new]), scope: :comment  do |f| %>
         <%= f.text_area :content %>
-        <%= f.submit "Comment" %>
+        <br>
+        <%= button_tag "hide", type: 'button', onclick: "$('##{@commentable.class}-#{@commentable.id}-new-comment-container').empty();", class: 'btn btn-secondary btn-sm'%>
+        <%= f.submit "Comment", class: 'btn btn-primary btn-sm'  %>
     <% end %>
-    <%= button_tag "hide", type: 'button', onclick: "$('##{@commentable.class}-#{@commentable.id}-new-comment-container').empty();"%>
+    
 </div>
