@@ -12,6 +12,8 @@
                 <% end %>   
         <% end %>
 <% else %>
-        <p class="btn btn-white btn-xs"><%= likeable.likes.count %> <i class="fa fa-thumbs-up"></i> Likes</p>
+        <%= button_to '#', remote: true, class: "btn btn-white btn-xs" do %>
+                <%= likeable.likes.count %> <i class="fa fa-thumbs-up"></i> Likes
+        <% end %>
 <% end %>
 
