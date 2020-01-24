@@ -2,18 +2,18 @@
 <% unless likeable.author_id == current_user.id %>
         <% if like %> 
                 <%#= render 'likes/delete_form', likeable: likeable, like: like %>
-                <%= button_to user_like_path(current_user.id,like.id), method: :delete, remote: true, class: "btn btn-white btn-xs" do %>
-                        <%= likeable.likes.count %> <i class="fa fa-thumbs-up"></i> Unlike
+                <%= link_to user_like_path(current_user.id,like.id), method: :delete, remote: true, class: "btn btn-white btn-xs", role: 'button' do %>
+                        <%= likeable.likes.count %> <i class="fa fa-thumbs-up", style='color: rgb(0,123,255);'></i>
                 <% end %>
         <% else %>
                 <%#= render 'likes/create_form', likeable: likeable %>
-                <%= button_to polymorphic_path([current_user, likeable, Like.new]), remote: true, class: "btn btn-white btn-xs" do %>
-                        <%= likeable.likes.count %> <i class="fa fa-thumbs-up"></i> Like
+                <%= link_to polymorphic_path([current_user, likeable, Like.new]), method: :post, remote: true, class: "btn btn-white btn-xs", role: 'button' do %>
+                        <%= likeable.likes.count %> <i class="fa fa-thumbs-up"></i>
                 <% end %>   
         <% end %>
 <% else %>
-        <%= button_to '#', remote: true, class: "btn btn-white btn-xs" do %>
-                <%= likeable.likes.count %> <i class="fa fa-thumbs-up"></i> Likes
+        <%= link_to '#', remote: true, class: "btn btn-white btn-xs", role: 'button' do %>
+                <%= likeable.likes.count %> <i class="fa fa-thumbs-up"></i>
         <% end %>
 <% end %>
 

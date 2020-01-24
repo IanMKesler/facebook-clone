@@ -6,11 +6,36 @@ body{margin-top:20px;
 
     
     /* Social feed */
+    #hide-button{
+      color: black;
+      background-color: lightgrey;
+    }
+    #hide-button:hover {
+      background-color: white;
+    }
+    #blue-button {
+      background-color: rgb(0,123,255);
+    }
+    #blue-button:hover {
+      color: black;
+      background-color: white;
+    }
     .btn {
-        background-color: lightgrey;
+        background-color: transparent;
+        border-radius: 0;
     }
     .btn:hover {
-        background-color: transparent;
+        background-color: lightgrey;
+    }
+    .btn:focus {
+      box-shadow: inherit;
+    }
+    .btn-group form {
+      display: inline;
+    }
+    .new-post-form {
+      margin-left: 62px;
+      margin-bottom: 15px;
     }
     .dropdown-toggle::after {
         display: inline-block;

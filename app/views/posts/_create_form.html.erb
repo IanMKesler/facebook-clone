@@ -1,6 +1,7 @@
-<div class = 'post-create-form' >
-    <%= form_with url: polymorphic_path([current_user, Post.new]), scope: :post  do |f| %>
-        <%= f.text_area :content %>
-        <%= f.submit "Post", class: "btn btn-primary" %>
-    <% end %>
+<%= form_with url: polymorphic_path([current_user, Post.new]), scope: :post do |f| %>
+<div class = 'd-flex flex-column'>
+    <%= f.text_area :content, placeholder: 'What are you thinking about?', class: 'p2', size: '20x5'; %>
+    <%= f.submit "Post", class: "btn btn-primary", id: 'blue-button' %>
 </div>
+    
+<% end %>
