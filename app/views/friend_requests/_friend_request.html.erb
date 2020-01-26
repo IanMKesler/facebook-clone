@@ -1,7 +1,7 @@
 <div class="dropdown-item">
     <%= link_to friend_request.inviter.full_name, friend_request.inviter %>
     <div id = <%= friend_request.id %>-request class="btn-group" role="group" aria-label="Basic example">
-        <%= button_to "Accept", user_friends_path(current_user), { class: "btn btn-secondary  mx-2", method: :post, remote: true, params: {friendship: { requestee_id: friend_request.inviter.id }}}  %>
-        <%= button_to "Decline", '#', class: "btn btn-secondary" %>
+        <%= button_to "Accept", user_friends_path(current_user), { class: "btn btn-secondary  mx-2", id: 'green-button', method: :post, remote: true, params: {friendship: { requestee_id: friend_request.inviter.id }}}  %>
+        <%= button_to "Decline", '#', class: "btn btn-secondary", id: 'red-button' %>
     </div>
 </div>

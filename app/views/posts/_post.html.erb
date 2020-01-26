@@ -15,10 +15,10 @@
         <% end %>
         <div class="social-avatar">
             <%= link_to post.author.full_name, post.author %>
-            <small class="text-muted">Today 4:21 pm - 12.06.2014</small>
+            <small class="text-muted">posted <%= time_ago_in_words(post.created_at) %> ago</small>
         </div>
         <div class="social-body">
-            <p>
+            <p class='post-content'>
                 <%= post.content %>
             </p>
             <div class="btn-group btn-group-sm", id = '<%= post.class.to_s %>-<%= post.id.to_s %>-buttons' >

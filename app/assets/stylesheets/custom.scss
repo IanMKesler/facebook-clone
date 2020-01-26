@@ -6,6 +6,20 @@ body{margin-top:20px;
 
     
     /* Social feed */
+    #green-button {
+      background-color: green;
+    }
+    #green-button:hover {
+      color: black;
+      background-color: white;
+    }
+    #red-button {
+      background-color: darkred;
+    }
+    #red-button:hover {
+      color: black;
+      background-color: white;
+    }
     #hide-button{
       color: black;
       background-color: lightgrey;
@@ -19,6 +33,13 @@ body{margin-top:20px;
     #blue-button:hover {
       color: black;
       background-color: white;
+    }
+    // .dropdown-menu {
+    //   right: 0 !important;
+    //   left: auto !important;
+    // }
+    .post-content {
+      font-size: medium;
     }
     .btn {
         background-color: transparent;

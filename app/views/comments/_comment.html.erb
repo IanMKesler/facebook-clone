@@ -15,6 +15,7 @@
         <%= link_to comment.author.full_name, comment.author %>
         <%= comment.content %>
         <br>
+        <small class="text-muted">posted <%= time_ago_in_words(comment.created_at) %> ago</small>
         <div class='btn-group'>
             <div id = '<%= comment.class.to_s %>-<%= comment.id.to_s %>-likes'>
                 <%= render 'likes/likes_button', likeable: comment %>
@@ -25,7 +26,6 @@
         </div>
         <%= content_tag "div", id: "#{comment.class}-#{comment.id}-new-comment-container" do %>
         <% end %>
-        <small class="text-muted">12.06.2014</small>
         <div id = '<%= comment.class.to_s %>-<%= comment.id %>-comments' >
             <%= render comment.comments, commentable: comment %>
         </div>
