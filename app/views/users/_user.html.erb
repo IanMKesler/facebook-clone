@@ -1,7 +1,32 @@
-<div>
-    <h2>
-        <%= user.full_name %>
-    </h2>
-    <%= button_tag 'Friend request' %>
-    <%= button_tag 'Unfriend'%>
+<div class="container">
+    <div class="profile-container">
+        <div class="row">
+            <div class="col-12 center-block text-center">
+                <h1><%= @user.full_name %></h1>
+            </div> 
+        </div>
+        <div class="row">
+            <div class = "col-12 center-block text-center">
+                <h6><%= @user.email %></h6>
+            </div>
+        </div>
+        <div class="row bottom-buffer">
+            <div class="col-12 center-block text-center">
+                <div id = 'request-button-container'>
+                    <% case @button %>
+                    <% when 'friend_request' %>
+                        <%= render 'friend_requests/friend_request_button', user_id: @user.id %>
+                    <% when 'sent_request' , "recieved_request" %>
+                        <div id= pending-request-message>
+                            <p>Pending request</p>
+                        </div>
+                    <% when 'unfriend' %>
+                        <div id = unfriend-button>
+                            <%= button_to "Unfriend", user_friend_path(current_user.id, current_user.friendship(@user).id), { method: :delete, remote: true, class: 'btn', id: 'hide-button'} %>
+                        </div>
+                    <% end %>
+                </div>
+            </div> 
+        </div>
+    </div> 
 </div>

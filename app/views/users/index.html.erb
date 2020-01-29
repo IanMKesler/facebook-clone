@@ -1,0 +1,9 @@
+<div class="md-form mt-0">
+    <%= form_with url: users_path, method: :get, scope: :search do |f| %>
+        <%= f.text_field :input, placeholder: "Search" %>
+        <%= f.submit "Search", class: "btn btn-sm", id: "blue-button"%>
+    <% end %>
+</div>
+<div class="container", id="user-list">
+    <%= render 'users/user_widgets', users: @users %>
+</div>

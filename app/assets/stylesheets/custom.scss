@@ -28,22 +28,20 @@ body{margin-top:20px;
       background-color: white;
     }
     #blue-button {
+      color: white;
       background-color: rgb(0,123,255);
     }
     #blue-button:hover {
       color: black;
       background-color: white;
     }
-    // .dropdown-menu {
-    //   right: 0 !important;
-    //   left: auto !important;
-    // }
     .post-content {
       font-size: medium;
     }
     .btn {
         background-color: transparent;
         border-radius: 0;
+        border-style: none;
     }
     .btn:hover {
         background-color: lightgrey;
@@ -83,6 +81,14 @@ body{margin-top:20px;
     .social-feed-separated .social-feed-box .social-avatar {
       padding: 15px 15px 0 15px;
       float: none;
+    }
+    .profile-container {
+      border: 1px solid #e7eaec;
+      background: #fff;
+      margin-bottom: 15px;
+    }
+    .bottom-buffer {
+      margin-bottom: 10px;
     }
     .social-feed-box {
       /*padding: 15px;*/

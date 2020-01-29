@@ -1,28 +1,5 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-<div class="container">
-    <div class="row">
-        <h1><%= @user.full_name %></h1>
-    </div>
-    <div class="row">
-        <h3><%= @user.email %></h3>
-    </div>
-    <div class="row">
-        <div id = 'request-button-container'>
-            <% case @button %>
-            <% when 'friend_request' %>
-                <%= render 'friend_requests/friend_request_button', user_id: @user.id %>   
-            <% when 'sent_request' , "recieved_request" %>
-                <div id= pending-request-message>
-                    <p>Pending request</p>
-                </div>
-            <% when 'unfriend' %>
-                <div id = unfriend-button>
-                    <%= button_to "Unfriend", user_friend_path(current_user.id, current_user.friendship(@user).id), { method: :delete, remote: true} %>
-                </div>
-            <% end %>
-        </div>
-    </div>
-</div>
+<%= render @user %>
 
 <div class="container">
     <div class="row">
@@ -31,9 +8,7 @@
                 <div class="row">
                     <h2>Friends</h2>
                 </div>
-                <% @user.friends.each do |friend| %>
-                    <%= render 'users/friend', friend: friend %>
-                <% end %>
+                <%= render 'users/user_widgets', users: @user.friends %>
             </div> 
         </div>
         <div class="col-md-7", id='feed'>

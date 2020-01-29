@@ -1,4 +1,4 @@
 <div id = friend-request-button>
-    <%= button_to "Send Friend Request", user_friend_requests_path(current_user.id), {method: :post, remote: true, params: {friend_request: {invitee_id: user_id }}}  %>
+    <%= button_to "Send Friend Request", user_friend_requests_path(current_user.id), {method: :post, remote: true, class: 'btn', id: 'blue-button',  params: {friend_request: {invitee_id: user_id }}}  %>
     <%# byebug %>
 </div>

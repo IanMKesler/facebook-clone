@@ -32,3 +32,7 @@ function hide_comments (id) {
     $(tag + '-show-comments').show();
     $(tag + '-comments').empty();
 }
+
+function search () {
+    
+}
