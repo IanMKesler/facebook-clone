@@ -5,5 +5,10 @@
     <% end %>
 </div>
 <div class="container", id="user-list">
-    <%= render 'users/user_widgets', users: @users %>
+    <div class="row">
+        <div class="col-md-2">
+            <%= render 'users/user_widgets', users: @users %>
+        </div> 
+    </div>
+    
 </div>

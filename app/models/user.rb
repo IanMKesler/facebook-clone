@@ -12,6 +12,11 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :likes, source: :likeable, source_type: 'Post'
   has_many :comments, foreign_key: :author, dependent: :destroy
   has_many :liked_comments, through: :likes, source: :likeable, source_type: 'Comment'
+  has_attached_file :avatar, default_url: "avatar.jpeg",  styles: {
+    thumb: '100x100>',
+    square: '200x200#',
+    medium: '300x300>'
+  }
   
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -23,6 +28,7 @@ class User < ApplicationRecord
   validates :last_name, presence:true, length: { maximum: 250 }
   validates :email, presence: true, format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/                  
 
   def full_name
     self.first_name + " " + self.last_name

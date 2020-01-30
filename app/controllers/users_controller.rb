@@ -18,10 +18,36 @@ class UsersController < ApplicationController
         @button = button_type
     end
 
+    def update
+        @user = current_user
+        @posts = @user.posts.order(:created_at)
+        if update_params.empty?
+            flash.now[:warning] = "Please choose a file to upload"
+            render 'users/show'
+            return
+        end
+        if @user.update_attributes(update_params)
+            flash[:success] = "Avatar Uploaded"
+            redirect_to current_user
+        else
+            flash.now[:warning] = "Unable to upload file"
+            render 'users/show'
+        end
+    end 
+
     private
+        def update_params
+            begin
+                params.require(:user).permit(:avatar)
+            rescue
+                {}
+            end
+        end
+
         def search_params
             params.require(:search).permit(:input)
         end
+
         def button_type
             case true
             when current_user == @user

@@ -1,5 +1,10 @@
 <% users.each do |u| %>
-    <div class="row">
-        <%= link_to u.full_name, u %>
+    <div class="row align-items-center pt-2 pb-2" id="user-widget">
+        <div class='col'>
+            <%= image_tag u.avatar.url(:square) %>
+        </div>
+        <div class="col d-flex text-center">
+            <%= link_to u.full_name, u %>
+        </div>  
     </div>
 <% end %>

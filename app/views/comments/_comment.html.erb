@@ -1,5 +1,6 @@
 <div class="social-comment ml-4", id = <%= comment.id.to_s %>>
     <a href="" class="pull-left">
+        <%= image_tag comment.author.avatar.url(:square) %>
     </a>
     <% if current_user == comment.author %>
         <div class="pull-right social-action dropdown">

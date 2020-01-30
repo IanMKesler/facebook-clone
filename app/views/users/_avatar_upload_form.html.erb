@@ -1,0 +1,9 @@
+<%= form_with url: user_path, method: :patch, scope: :user, local: true, multipart: true, html: {class: "pt-2", id: "upload-form", style: "display: none"} do |f| %>
+  <div class="field">
+    <%= f.file_field :avatar %>
+  </div>
+  <div class="btn-group">
+    <%= button_tag "Hide", type: "button" , onclick: "hide_upload();", class: "btn btn-secondary btn-sm", id: "hide-button" %>
+    <%= f.submit 'Upload', class: "btn btn-primary btn-sm", id: "blue-button" %>
+  </div>
+<% end %>

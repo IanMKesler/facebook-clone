@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     root to: "users/sessions#new"
   end
 
-  resources :users, only: [:show, :index] do
+  resources :users, only: [:show, :index, :update] do
     resources :friend_requests, only: [:create, :index, :destroy]
     resources :friendships, only: [:create, :index, :destroy], path: :friends, as: :friends
     resources :posts, only: [:create, :index, :destroy] do

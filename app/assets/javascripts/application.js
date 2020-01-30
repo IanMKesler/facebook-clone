@@ -33,6 +33,12 @@ function hide_comments (id) {
     $(tag + '-comments').empty();
 }
 
-function search () {
-    
+function show_upload() {
+    $('#upload-link').hide(); 
+    $('#upload-form').show();
+}
+
+function hide_upload() {
+    $('#upload-form').hide();
+    $('#upload-link').show();
 }

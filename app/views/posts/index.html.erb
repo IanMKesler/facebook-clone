@@ -1,15 +1,6 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
     <div class="row">
-        <div class="col-sm-2">
-            <div class="friends container">
-                <div class="container">
-                    <% current_user.friends.each do |friend| %>
-                        <%= render 'users/friend', friend: friend%>
-                    <% end %>
-                </div>
-            </div>
-        </div>
         <div class="col-md-7", id='feed'>
             <div class="new-post-form">
                 <%= render 'posts/create_form' %>
@@ -17,5 +8,4 @@
             <%= render @posts %>
         </div>
     </div>
-    
 </div>

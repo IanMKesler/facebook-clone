@@ -1,5 +1,6 @@
 <div class="social-feed-separated", id=<%= post.id.to_s %>>
     <div class="social-avatar">
+        <%= image_tag post.author.avatar.url(:square) %>
     </div>
 
     <div class="social-feed-box">
