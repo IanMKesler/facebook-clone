@@ -21,10 +21,12 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 #Password encryption
 gem 'devise'
+#Google oauth
+gem 'omniauth-google-oauth2'
 #File upload
 gem 'paperclip'
 #AWS storage
-gem 'aws-sdk', '~> 2.3' 
+gem 'aws-sdk-s3'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
