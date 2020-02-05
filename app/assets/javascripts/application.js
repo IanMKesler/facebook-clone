@@ -42,3 +42,18 @@ function hide_upload() {
     $('#upload-form').hide();
     $('#upload-link').show();
 }
+
+$(document).ready(function() {
+    $(".non-focus").mouseenter(function() {
+        $(".focus").show();
+        $(".non-focus").hide();
+        $(this).hide();
+    });
+  
+    $(".focus").mouseout(function() {
+      $(".non-focus").show();
+      $(".focus").hide();
+      $(this).hide();
+    });
+});
+

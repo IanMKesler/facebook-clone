@@ -45,6 +45,9 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= link_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider) %><br />
+    <div class="col-12 center-block text-center">
+      <div class="non-focus"><%= link_to image_tag("btn_google_signin_dark_normal_web.png"), omniauth_authorize_path(resource_name, provider) %></div>
+      <div class="focus"><%= link_to image_tag("btn_google_signin_dark_focus_web.png", id: 'focused'), omniauth_authorize_path(resource_name, provider) %></div>
+    </div>
   <% end %>
 <% end %>

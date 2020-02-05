@@ -1,5 +1,19 @@
 <div class="container">
     <div class="profile-container">
+        <% if user == current_user %>
+            <div class="row">
+                <div class = "col">
+                    <div class="pull-right social-action dropdown">
+                        <button data-toggle="dropdown" class="dropdown-toggle btn-white">
+                            <i class="fa fa-angle-down"></i>
+                        </button>
+                        <ul class="dropdown-menu m-t-xs">
+                            <li> <%= link_to "Cancel my account", registration_path(user), data: { confirm: "Are you sure?" }, method: :delete %>
+                        </ul>
+                    </div>
+                </div>  
+            </div>
+        <% end %>
         <div class="row">
             <div class="col-12 center-block text-center pt-4">
                 <%= image_tag user.avatar.url(:medium) %>

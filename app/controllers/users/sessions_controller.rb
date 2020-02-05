@@ -13,15 +13,17 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  #DELETE /resource/sign_out
+  def destroy
+    current_user.remember_me = false
+    super
+    flash[:notice] = "Signed out. Please sign out of your google account to ensure account security"
+  end
 
     protected
 
     def after_sign_in_path_for(resource)
-      resource
+      user_posts_path(resource)
     end
 
     def after_sign_out_path_for(resource)

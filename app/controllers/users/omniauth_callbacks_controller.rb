@@ -1,30 +1,22 @@
 # frozen_string_literal: true
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  # You should configure your model like this:
-  # devise :omniauthable, omniauth_providers: [:twitter]
+  def google_oauth2
+    auth = request.env["omniauth.auth"]
+    user = User.find_by(provider: auth["provider"], uid: auth["uid"])
+    unless user
+      user = User.find_by(email: auth["info"]["email"])
+      user.assign_attributes(provider: auth["provider"], uid: auth["uid"]) if user
+    end
+    unless user
+      name = auth["info"]["name"].split(" ")
+      user = User.new(email: auth["info"]["email"], first_name: name[0], last_name: name[1], provider: auth["provider"], uid: auth["uid"], password: Devise.friendly_token)
+    end
+    user.save!
+    sign_in(:user, user)
+    
 
-  # You should also create an action method in this controller like this:
-  # def twitter
-  # end
-
-  # More info at:
-  # https://github.com/plataformatec/devise#omniauth
-
-  # GET|POST /resource/auth/twitter
-  # def passthru
-  #   super
-  # end
-
-  # GET|POST /users/auth/twitter/callback
-  # def failure
-  #   super
-  # end
-
-  # protected
-
-  # The path used when OmniAuth fails
-  # def after_omniauth_failure_path_for(scope)
-  #   super(scope)
-  # end
+    flash[:success] = "Signed in with Google"
+    redirect_to user_posts_path(user.id)
+end    
 end

@@ -22,7 +22,7 @@ class User < ApplicationRecord
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :omniauthable, omniauth_providers: [:google_oauth2]
 
   validates :first_name, presence: true, length: { maximum: 250 }
   validates :last_name, presence:true, length: { maximum: 250 }
@@ -52,6 +52,15 @@ class User < ApplicationRecord
 
   def feed
     Post.where(author_id: id).or(Post.where(author_id: friend_ids)).order(created_at: :desc)
+  end
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.token = auth.credentials.token
+      user.expires = auth.credentials.expires
+      user.expires_at = auth.credentials.expires_at
+      user.refresh_token = auth.credentials.refresh_token
+    end
   end
 
   private

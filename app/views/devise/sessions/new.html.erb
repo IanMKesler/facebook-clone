@@ -23,6 +23,7 @@
             <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
           </div>
         </div>
+        
         <div class="form-row justify-content-center">
           <% if devise_mapping.rememberable? %>
             <div class="col-sm-2 d-flex justify-content-end">
@@ -40,8 +41,8 @@
         </div>
       </div>  
     </div>
+    <%= render "devise/shared/links" %>
   </div>
-  <%= render "devise/shared/links" %>
 </div>
 
 
