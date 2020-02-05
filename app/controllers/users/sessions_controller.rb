@@ -17,7 +17,7 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     current_user.remember_me = false
     super
-    flash[:notice] = "Signed out. Please sign out of your google account to ensure account security"
+    flash[:notice] = "Signed out. Please sign out of your Google account to ensure account security."
   end
 
     protected
